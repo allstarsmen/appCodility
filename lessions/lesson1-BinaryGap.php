@@ -17,7 +17,24 @@
 // N is an integer within the range [1..2,147,483,647].
 
 Class BinaryGap {
+  function solution($N) {
+      $binary = decbin($N);
+      $count = 0;
+      $maxCount = 0;
 
+      for($i=0; $i < strlen($binary);$i++) {
+          if ($binary[$i] === '1') {
+              if ($count > $maxCount ) {
+                  $maxCount = $count;
+              }
+              $count = 0;
+          } else {
+              $count++;
+          }
+      }
+
+      return $maxCount;
+  }
 }
 
 ?>
