@@ -30,6 +30,23 @@
 // all but one of the values in A occur an even number of times.
 
 Class OddOccurrencesInArray {
-  
+  function solution($A) {
+      // Implement your solution here
+      sort($A);
+
+      $i = 0;
+
+      while($i < count($A)) {
+          $j = $i + 1;
+
+          if (!isset($A[$j])) { return $A[$i]; }
+
+          if ($A[$i] === $A[$j]) {
+              $i += 2;
+          } else {
+              return $A[$i];
+          }
+      }
+  }
 }
 ?>
