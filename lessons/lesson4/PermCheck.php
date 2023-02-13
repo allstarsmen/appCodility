@@ -44,5 +44,24 @@ Class PermCheck {
 
 //   N is an integer within the range [1..100,000];
 //   each element of array A is an integer within the range [1..1,000,000,000].
+  
+  function solution($A) {
+      $result = 1;
+
+      sort($A);
+
+      if ($A[0] !== 1) { return 0; }
+
+      foreach($A as $i => $no) {
+          $nextI = $i + 1;
+          $nextNo = $no + 1;
+
+          if (isset($A[$nextI]) && $nextNo !== $A[$nextI]) {
+              $result = 0;
+          }
+      }
+
+      return $result;
+  }
 }
 ?>
