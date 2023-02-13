@@ -41,6 +41,23 @@ Class TapeEquilibrium {
 
 // N is an integer within the range [2..100,000];
 // each element of array A is an integer within the range [−1,000..1,000].
-  
+  function solution($A) {
+      $sum = array_sum($A);
+      $min = PHP_INT_MAX;
+      $x = 0;
+
+      for($i=0; $i < count($A) - 1; $i++) {
+          $no = $A[$i];
+          $x += $no;
+          $sum -= $no;
+
+          $diff = abs($x - $sum);
+          if ($min > $diff) {
+              $min = $diff;
+          }
+      }
+
+      return $min;
+  }
 }
 ?>
