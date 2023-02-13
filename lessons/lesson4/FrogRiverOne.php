@@ -43,6 +43,26 @@
 // each element of array A is an integer within the range [1..X].
 
 Class FrogRiverOne {
+  function solution($X, $A) {
+      $B = array_fill(0, $X, false);
+      $count = 0;
+      $result = -1;
 
+      foreach($A as $i => $no) {
+          $bIndex = $no - 1;
+          if (isset($B[$bIndex])) {
+              if ($B[$bIndex] === false) {
+                  $B[$bIndex] = true;
+                  $count++;
+
+                  if ($count === $X) {
+                      $result = $i;
+                  }
+              }
+          }
+      }
+
+      return $result;
+  }
 }
 ?>
