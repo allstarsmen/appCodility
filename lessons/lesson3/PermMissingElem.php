@@ -24,6 +24,23 @@
 // each element of array A is an integer within the range [1..(N + 1)].
 
 Class PermMissingElem {
-  
+  function solution($A) {
+      if (count($A) === 0) { return 1; }
+
+      sort($A);
+
+      if ($A[0] !== 1) { return 1; }
+
+      foreach($A as $i => $no) {
+          $missingNo = $no + 1;
+          if (!isset($A[$i + 1])) {
+              return $missingNo;
+          }
+
+          if ($A[$i + 1] !== $missingNo) {
+              return $missingNo;
+          }
+      }
+  }
 }
 ?>
