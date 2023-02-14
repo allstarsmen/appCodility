@@ -52,5 +52,38 @@ Class MaxCounters {
 
 //   N and M are integers within the range [1..100,000];
 //   each element of array A is an integer within the range [1..N + 1].
+  
+  function solution($N, $A) {
+      $B = array_fill(0, $N, 0);
+      $maxCount = 0;
+      $start = 0;
+
+      foreach($A as $no) {
+          if ($no >= 1 && $no <= $N) {
+              $bIndex = $no - 1;
+
+              $count = $start;
+              if ($B[$bIndex] > $count) {
+                  $count = $B[$bIndex];
+              }
+
+              $B[$bIndex] = $count + 1;
+
+              if ($B[$bIndex] > $maxCount) {
+                  $maxCount = $B[$bIndex];
+              }
+          } else if ($no === $N + 1) {
+              $start = $maxCount;
+          }
+      }
+
+      foreach($B as $bIndex => $bNo) {
+          if($bNo < $start) {
+              $B[$bIndex] = $start;
+          }
+      }
+
+      return $B;
+  }
 }
 ?>
