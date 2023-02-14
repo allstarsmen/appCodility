@@ -19,5 +19,19 @@ Class MissingInteger {
 
 //   N is an integer within the range [1..100,000];
 //   each element of array A is an integer within the range [−1,000,000..1,000,000].
+  
+  function solution($A) {
+      sort($A);
+
+      $missingNo = 1;
+
+      foreach($A as $no) {
+          if ($missingNo == $no) {
+              $missingNo++;
+          }
+      }
+
+      return $missingNo;
+  }
 }
 ?>
