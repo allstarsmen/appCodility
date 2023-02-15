@@ -16,6 +16,14 @@
 // A ≤ B.
 
 Class CountDiv {
-  
+  function solution($A, $B, $K) {
+      $a = intdiv($A, $K);
+      $b = intdiv($B, $K);
+      $result = $b - $a;
+
+      if ($A % $K === 0) {return $result + 1; }
+
+      return $result;
+  }
 }
 ?>
