@@ -40,6 +40,31 @@
 // each element of array A is an integer within the range [−10,000..10,000].
   
 class MinAvgTwoSlice {
-  
+  function solution($A) {
+      $len = count($A);
+
+      if ($len < 3) { return 0; }
+
+      $m = 100001;
+      $index = 0;
+
+      for($i=0; $i < $len-1; $i++) {
+          $t = ($A[$i] + $A[$i+1]) / 2;
+          if ($t < $m) {
+              $m = $t;
+              $index = $i;
+          }
+      }
+
+      for($i=0; $i < $len - 2; $i++) {
+          $t = ($A[$i] + $A[$i+1] + $A[$i+2]) / 3;
+          if ($t < $m) {
+              $m = $t;
+              $index = $i;
+          }
+      }
+
+      return $index;
+  }
 }
 ?>
