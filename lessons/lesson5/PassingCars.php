@@ -39,6 +39,23 @@
 // each element of array A is an integer that can have one of the following values: 0, 1.
   
 Class PassingCars {
-  
+    function solution($A) {
+      if (count($A) === 1) { return 0; }
+
+      $westCars = array_sum($A);
+      $numberOfPairs = 0;
+
+      foreach($A as $car) {
+          if ($car === 0) {
+              $numberOfPairs += $westCars;
+          } else {
+              $westCars--;
+          }
+      }
+
+      if ($numberOfPairs > 1000000000) { return -1; }
+
+      return $numberOfPairs;
+    }
 }
 ?>
