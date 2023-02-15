@@ -37,6 +37,26 @@
 // string S consists only of upper-case English letters A, C, G, T.
   
 class GenomicRangeQuery {
-  
+  function solution($S, $P, $Q) {
+      $result = [];
+
+      foreach($P as $i => $start) {
+          $end = $Q[$i];
+
+          $min = 4;
+          $sS = substr($S, $start, ($end + 1) - $start);
+          if (strpos($sS, 'A') !== false) {
+              $min = 1;
+          } else if (strpos($sS, 'C') !== false) {
+              $min = 2;
+          } else if (strpos($sS, 'G') !== false) {
+              $min = 3;
+          }
+
+          $result[] = $min;
+      }
+
+      return $result;
+  }
 }
 ?>
