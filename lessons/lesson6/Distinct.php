@@ -18,6 +18,16 @@
 // each element of array A is an integer within the range [−1,000,000..1,000,000].
 
 class Distinct {
+  function solution($A) {
+      $result = [];
 
+      foreach($A as $no) {
+          if (!isset($result[$no])) {
+              $result[$no] = true;
+          }
+      }
+
+      return count($result);
+  }
 }
 ?>
