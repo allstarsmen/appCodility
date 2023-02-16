@@ -39,6 +39,14 @@
 // each element of array A is an integer within the range [−1,000..1,000].
 
 class MaxProductOfThree{
+  function solution($A) {
+      sort($A);
+      $len = count($A);
 
+      $x = $A[$len-1] * $A[$len-2] * $A[$len-3];
+      $y = $A[$len-1] * $A[0] * $A[1];
+
+      return max($x, $y);
+  }
 }
 ?>
