@@ -33,6 +33,21 @@
 // each element of array A is an integer within the range [−2,147,483,648..2,147,483,647].
 
 class Triangle {
-  
+  function solution($A) {
+      rsort($A);
+      $x = $A[0] - $A[1];
+
+      foreach($A as $i => $no) {
+          if ($i > 1) {
+              if ($x >= $no) {
+                  $x = $A[$i-1] - $no;
+              } else {
+                  return 1;
+              }
+          } 
+      }
+
+      return 0;
+  }
 }
 ?>
