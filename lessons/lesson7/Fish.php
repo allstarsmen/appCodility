@@ -39,6 +39,30 @@
 // the elements of A are all distinct.
 
 class Fish {
-  
+    $allFishes = count($fishSizes);
+
+    if ($allFishes === 1) { return 1; }
+
+    $downstreamFishes = [];
+    $downstream = 1;
+
+    for($i = 0; $i < count($fishSizes); $i++) {
+        if ($fishDirections[$i] === $downstream) {
+            $downstreamFishes[] = $fishSizes[$i];
+        } else {
+            while(!empty($downstreamFishes)) {
+                $allFishes--;
+
+                $downstreamFish = $downstreamFishes[count($downstreamFishes) - 1];
+                if ($downstreamFish > $fishSizes[$i]) {
+                    break;
+                } else {
+                    array_pop($downstreamFishes);
+                }
+            }
+        }
+    }
+
+    return $allFishes;
 }
 ?>
