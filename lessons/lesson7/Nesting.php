@@ -21,6 +21,23 @@
 // string S is made only of the characters "(" and/or ")".
 
 class Nesting {
-  
+  function solution($S) {
+      if (empty($S)) { return 1; }
+
+      if ($S[0] === ")") { return 0; }
+
+      $pair = ["(" => ")"];
+      $stack = [];
+
+      for($i=0; $i < strlen($S); $i++) {
+          if ($S[$i] === "(") {
+              $stack[] = "(";
+          } else if ($pair[array_pop($stack)] !== ")") {
+              return 0;
+          }
+      }
+
+      return (empty($stack)) ? 1 : 0;
+  }
 }
 ?>
