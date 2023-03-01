@@ -28,6 +28,35 @@
 // each element of array A is an integer within the range [−2,147,483,648..2,147,483,647].
 
 class Dominator {
-  
+    $stack = [];
+    $dominator = -1;
+    $mxCount = -1;
+
+    foreach($A as $no) {
+        // count the occurrence of the number
+        if (!isset($stack[$no])) {
+            $stack[$no] = 1;
+        } else {
+            $stack[$no]++;
+        }
+
+        // take the number that has occurs the most in the array as a dominator
+        if ($stack[$no] > $mxCount) {
+            $mxCount = $stack[$no];
+            $dominator = $no;
+        }
+    }
+
+    // if the occurrence of dominator is more than half of the elements in the array 
+    if ($mxCount > (count($A) / 2)) {
+        // return the first index of dominator in the array
+        foreach($A as $i => $no) {
+            if ($dominator === $no) {
+                return $i;
+            }
+        }
+    }
+
+    return -1;
 }
 ?>
