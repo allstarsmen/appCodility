@@ -23,6 +23,27 @@
 // each element of array H is an integer within the range [1..1,000,000,000].
 
 class StoneWall {
-  
+  $stack = [];
+  $count = 0;
+
+  foreach($H as $stoneIndex => $stoneHeight) {
+      // If the stone height in the stack is larger than the current one, remove the one in the stack.
+      while(count($stack) > 0 && isset($stack[count($stack) - 1]) && $stack[count($stack) - 1] > $stoneHeight) {
+          array_pop($stack);
+      }
+
+      // if the stone heigh in the stack is equal the current one, do nothing
+      $last = count($stack) - 1;
+      if (!empty($stack) && isset($stack[$last]) && $stack[$last] == $stoneHeight) {
+          // do nothing
+      } else {
+          // add the new height to the stack
+          $stack[] = $stoneHeight;
+          // increase counter
+          $count++;
+      }
+  }
+
+  return $count;
 }
 ?>
