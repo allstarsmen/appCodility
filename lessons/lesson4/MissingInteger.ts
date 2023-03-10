@@ -21,16 +21,8 @@ export class Task {
     solution(A: number[]): number {
         let missing = 1
 
-        const obj: any = {}
-
-        A.forEach(no => {
-            if (obj[no] == null) {
-                obj[no] = 1
-            }
-        });
-
-        Object.keys(obj).sort((a, b) => +a - +b).forEach(no => {
-            if (+no > 0 && +no == missing) {
+        A.sort((a,b) => a - b).forEach(no => {
+            if (no == missing) {
                 missing++
             }
         })
